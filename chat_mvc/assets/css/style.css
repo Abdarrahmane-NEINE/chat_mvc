@@ -35,35 +35,3 @@ h1 {
     margin-right:6px;
     height:calc(1.5em + .75rem + 2px);
 }
-/* .header {
-    max-width: 10%;
-    background-color: black;
-} */
-/* .container {
-    max-width: 10%;
-}
-.test {
-    background-color: chartreuse;
-    max-width: 100%;
-} */
-@media screen and (max-width: 900px) {
-    /* .header {
-        max-width: 1%;
-        background-color: black;
-    } */
-    /* .navbar-brand {
-        min-width: 100%;
-        background-color: black;
-    } */
-    .test {
-        background-color: chartreuse;
-        max-width: 100%;
-    } 
-    body {
-        display: none;
-        align-items: center;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        background-color: #eb4343;
-    }
-}
