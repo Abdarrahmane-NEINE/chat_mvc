@@ -1,0 +1,57 @@
+    <div class="card">
+    <div class="card-header">Mon profil</div>
+    <div class="card-body">
+        <form action="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=updateUser" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="token" value="<?= $tplVars['Token']; ?>" />
+            <div class="form-group row">
+                <label for="inputEmail" class="col-md-4 col-form-label text-md-right">Email</label>
+                <div class="col-md-6">
+                    <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" value="<?= htmlspecialchars($tplVars['User']['Email']);?>" required autocomplete="nope">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputNickname" class="col-md-4 col-form-label text-md-right">Pseudo</label>
+                <div class="col-md-6">
+                    <input type="text" id="inputNickname" name="inputNickname" class="form-control" placeholder="Pseudo" value="<?= htmlspecialchars($tplVars['User']['Nickname']);?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputAvatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
+                <div class="col-md-6">
+                    <?php
+                    /*
+                    afficher l'image s'il y a un avatar dans la base de données
+                    1 - comment on récupérer la valeur de l'avatar ?
+                    2 - comment on test s'il n'est pas NULL
+                    3 - comment on affiche une image dans l'html ?
+                    */
+                    ?>
+                    <?php
+                    if ($tplVars['User']['Avatar'] != null):
+                    ?>
+                    <img src="upload/<?= htmlspecialchars($tplVars['User']['Avatar'])?>" class="avatar" alt="Avatar" />
+                    <?php
+                    endif;
+                    
+                    ?>
+                    <input type="file" id="inputAvatar" name="inputAvatar" class="form-control-file">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-md-4 col-form-label text-md-right">Mot de passe</label>
+                <div class="col-md-6">
+                    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" autocomplete="new-password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword2" class="col-md-4 col-form-label text-md-right">Re-saisir</label>
+                <div class="col-md-6">
+                    <input type="password" id="inputPassword2" name="inputPassword2" class="form-control" placeholder="Re-saisir">
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-4">
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Valider</button>
+            </div>
+        </form>
+        </div>
+    </div>

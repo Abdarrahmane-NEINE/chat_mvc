@@ -1,0 +1,49 @@
+<h1 class="h3 mb-3 font-weight-normal"></h1>
+    <div id="conversation">
+        <?php foreach($tplVars['conversations'] as $item): ?>
+            <!-- une conversation -->
+            <?php
+            /*
+            si $_SESSION['user']['Id'] == User_id de la conversation alors 
+            c'est ma conversation, donc je peux le supprimer
+            
+            ou 
+            
+            $_SESSION['user']['Admin'] == 1
+            */
+            if($_SESSION['user']['Id'] === intVal($item["User_id"]) || $_SESSION['user']['Admin'] === 1):
+            ?>
+            <a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=conversation&task=delete&id=<?= $item["Id"];?>" class="badge badge-danger">x</a>
+            <?php 
+            endif;
+            ?>
+            <span class="badge badge-primary"><?= htmlspecialchars($item['Nickname']); ?></span>
+            <?php
+             //affichage de l'avatar
+            if ($item['Avatar'] != null):
+            ?>
+            <img src="upload/<?= htmlspecialchars($item['Avatar']);?>" class="avatar" alt="Avatar" />
+            <?php
+            endif;
+            ?>
+            <span class="badge"><?= htmlspecialchars($item['Content']); ?></span><br />
+        <?php endforeach; ?>
+    </div><br />
+    <form id="chatform" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=conversation&task=message" method="post">
+        <input type="hidden" name="token" value="<?= $tplVars['Token']; ?>" />
+         <div class="input-group">
+             <?php
+             //affichage de l'avatar
+                    if ($_SESSION['user']['Avatar'] != null):
+                    ?>
+                    <img src="upload/<?= $_SESSION['user']['Avatar'];?>" class="avatar" alt="Avatar" />
+                    <?php
+                    endif;
+                    ?>
+            <input type="text" id="message" name="message" placeholder="message" class="form-control" required>
+            <div class="input-group-append">
+              <button type="submit" id="envoyer" class="btn btn-primary">Envoyer</button>
+            </div>
+        </div>
+    </form>
+	
